@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Spline from '@splinetool/react-spline';
 
-const Hero = () => {
+const Hero = ({ logo }) => {
   return (
     <section className="relative min-h-screen w-full bg-black overflow-hidden text-white">
       {/* Spline 3D background */}
@@ -23,9 +23,13 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="flex flex-col items-center"
         >
-          {/* Brand mark placeholder frame for uploaded logo */}
+          {/* Brand mark frame shows uploaded logo when available */}
           <div className="mb-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 shadow-[0_0_60px_-20px_rgba(255,255,255,0.35)]">
-            <div className="h-16 w-16 rounded-xl bg-gradient-to-tr from-white/20 to-white/5 shadow-inner" />
+            <div className="relative grid h-16 w-16 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-white/20 to-white/5 shadow-inner">
+              {logo ? (
+                <img src={logo} alt="Brand logo" className="max-h-full max-w-full object-contain" />
+              ) : null}
+            </div>
           </div>
 
           <h1 className="text-4xl md:text-6xl tracking-[0.14em] font-semibold uppercase text-white/90">
